@@ -369,7 +369,6 @@ function EqForm({ zone, onSave }: { zone: { stateId: number; districtId: number;
         <input value={phone} onChange={e => setPhone(e.target.value)} placeholder="Phone" className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white" />
       </div>
       <button onClick={() => setAvail(!avail)} className="flex items-center gap-2 text-sm"><span className={`w-10 h-5 rounded-full ${avail ? 'bg-emerald-600' : 'bg-slate-700'}`}><span className={`block w-4 h-4 rounded-full bg-white transition ${avail ? 'translate-x-5' : 'translate-x-0.5'}`} /></span>{avail ? t('available') : t('notAvailable')}</button>
-// 🌟 Change it to this:
 <button onClick={() => onSave({ zone_id: zone.mandalId?.toString(), name, specs, price_per_hour: price, contact_phone: phone, available: avail, state_id: zone.stateId, district_id: zone.districtId, mandal_id: zone.mandalId })} disabled={!name} className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white font-bold rounded-lg text-sm">{t('saveEquipment')}</button>    </div>
   );
 }
