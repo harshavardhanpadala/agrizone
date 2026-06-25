@@ -369,8 +369,8 @@ function EqForm({ zone, onSave }: { zone: { stateId: number; districtId: number;
         <input value={phone} onChange={e => setPhone(e.target.value)} placeholder="Phone" className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white" />
       </div>
       <button onClick={() => setAvail(!avail)} className="flex items-center gap-2 text-sm"><span className={`w-10 h-5 rounded-full ${avail ? 'bg-emerald-600' : 'bg-slate-700'}`}><span className={`block w-4 h-4 rounded-full bg-white transition ${avail ? 'translate-x-5' : 'translate-x-0.5'}`} /></span>{avail ? t('available') : t('notAvailable')}</button>
-      <button onClick={() => onSave({ zone_id: `mandal_${zone.mandalId}`, name, specs, price_per_hour: price, contact_phone: phone, available: avail, state_id: zone.stateId, district_id: zone.districtId, mandal_id: zone.mandalId })} disabled={!name} className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white font-bold rounded-lg text-sm">{t('saveEquipment')}</button>
-    </div>
+// 🌟 Change it to this:
+<button onClick={() => onSave({ zone_id: zone.mandalId?.toString(), name, specs, price_per_hour: price, contact_phone: phone, available: avail, state_id: zone.stateId, district_id: zone.districtId, mandal_id: zone.mandalId })} disabled={!name} className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white font-bold rounded-lg text-sm">{t('saveEquipment')}</button>    </div>
   );
 }
 
@@ -415,8 +415,7 @@ function InfraForm({ zone, onSave }: { zone: { stateId: number; districtId: numb
         <input value={price} onChange={e => setPrice(e.target.value)} placeholder="Price info" className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white" />
       </div>
       <button onClick={() => setAvail(!avail)} className="flex items-center gap-2 text-sm"><span className={`w-10 h-5 rounded-full ${avail ? 'bg-emerald-600' : 'bg-slate-700'}`}><span className={`block w-4 h-4 rounded-full bg-white transition ${avail ? 'translate-x-5' : 'translate-x-0.5'}`} /></span>{avail ? t('available') : t('notAvailable')}</button>
-      <button onClick={() => onSave({ zone_id: `mandal_${zone.mandalId}`, infra_type: type, name, village, capacity: cap, current_usage: 0, unit: type === 'drying_yard' ? 'sq ft' : 'lph', price_info: price, available: avail, state_id: zone.stateId, district_id: zone.districtId, mandal_id: zone.mandalId })} disabled={!name || !village} className="w-full py-2.5 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 text-white font-bold rounded-lg text-sm">Save</button>
-    </div>
+<button onClick={() => onSave({ zone_id: zone.mandalId?.toString(), infra_type: type, name, village, capacity: cap, current_usage: 0, unit: type === 'drying_yard' ? 'sq ft' : 'lph', price_info: price, available: avail, state_id: zone.stateId, district_id: zone.districtId, mandal_id: zone.mandalId })} disabled={!name || !village} className="w-full py-2.5 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 text-white font-bold rounded-lg text-sm">Save</button>    </div>
   );
 }
 
