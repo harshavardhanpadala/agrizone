@@ -433,7 +433,7 @@ function CropForm({ zone, onSave }: { zone: { stateId: number; districtId: numbe
         <input type="number" value={qty} onChange={e => setQty(parseInt(e.target.value) || 0)} placeholder={t('village')} className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white" />
         <input type="number" value={price} onChange={e => setPrice(parseInt(e.target.value) || 0)} placeholder={t('pricePerQuintal')} className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white" />
       </div>
-      <button onClick={() => onSave({ zone_id: `mandal_${zone.mandalId}`, crop_name: name, quantity: qty, price_per_quintal: price, village, state_id: zone.stateId, district_id: zone.districtId, mandal_id: zone.mandalId })} disabled={!name || !village} className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white font-bold rounded-lg text-sm">{t('listCropForSale')}</button>
+      <button onClick={() => onSave({ zone_id: zone.mandalId?.toString(), crop_name: name, quantity: qty, price_per_quintal: price, village, state_id: zone.stateId, district_id: zone.districtId, mandal_id: zone.mandalId })} disabled={!name || !village} className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white font-bold rounded-lg text-sm">{t('listCropForSale')}</button>
     </div>
   );
 }
@@ -452,7 +452,7 @@ function AgroForm({ zone, onSave }: { zone: { stateId: number; districtId: numbe
         <input type="number" value={price} onChange={e => setPrice(parseInt(e.target.value) || 0)} placeholder="Price" className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white" />
         <input type="number" value={stock} onChange={e => setStock(parseInt(e.target.value) || 0)} placeholder={t('stock')} className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white" />
       </div>
-      <button onClick={() => onSave({ zone_id: `mandal_${zone.mandalId}`, product_name: name, product_type: type, price, stock, max_stock: stock * 2, state_id: zone.stateId, district_id: zone.districtId, mandal_id: zone.mandalId })} disabled={!name} className="w-full py-2.5 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 text-white font-bold rounded-lg text-sm">{t('addProduct')}</button>
+      <button onClick={() => onSave({ zone_id: zone.mandalId?.toString(), name, type, price, stock, state_id: zone.stateId, district_id: zone.districtId, mandal_id: zone.mandalId })} disabled={!name} className="w-full py-2.5 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 text-white font-bold rounded-lg text-sm">{t('listAgroProduct')}</button>
     </div>
   );
 }
@@ -471,7 +471,7 @@ function GrvForm({ zone, onSave }: { zone: { stateId: number; districtId: number
         <select value={cat} onChange={e => setCat(e.target.value)} className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white">{GRV_CATS.map(c => <option key={c} value={c}>{c}</option>)}</select>
         <input value={village} onChange={e => setVillage(e.target.value)} placeholder={t('village')} className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white" />
       </div>
-      <button onClick={() => onSave({ zone_id: `mandal_${zone.mandalId}`, title, description: desc, category: cat, village, state_id: zone.stateId, district_id: zone.districtId, mandal_id: zone.mandalId })} disabled={!title || !desc} className="w-full py-2.5 bg-orange-600 hover:bg-orange-500 disabled:bg-slate-700 text-white font-bold rounded-lg text-sm flex items-center justify-center gap-2"><Send className="w-4 h-4" />{t('submitGrievance')}</button>
+      <button onClick={() => onSave({ zone_id: zone.mandalId?.toString(), title, description: desc, category: cat, village, state_id: zone.stateId, district_id: zone.districtId, mandal_id: zone.mandalId })} disabled={!title || !desc} className="w-full py-2.5 bg-orange-600 hover:bg-orange-500 disabled:bg-slate-700 text-white font-bold rounded-lg text-sm flex items-center justify-center gap-2"><Send className="w-4 h-4" />{t('submitGrievance')}</button>
     </div>
   );
 }
